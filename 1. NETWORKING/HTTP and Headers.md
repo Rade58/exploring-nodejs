@@ -30,4 +30,4 @@ nc google.com 80
 GET /favicon.ico HTTP/1.O
 Host: google.com
 ``` 
-
+I WASN'T SUCCESSFUL
