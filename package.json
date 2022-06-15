@@ -18,5 +18,8 @@
   "homepage": "https://github.com/Rade58/web-security-and-nodejs-workshop#readme",
   "dependencies": {
     "typescript": "^4.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.44"
   }
 }
