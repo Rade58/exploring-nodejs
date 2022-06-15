@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-web-security-workshop",
+  "version": "1.0.0",
+  "description": "TABLE OF CONTENT:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rade58/web-security-and-nodejs-workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rade58/web-security-and-nodejs-workshop/issues"
+  },
+  "homepage": "https://github.com/Rade58/web-security-and-nodejs-workshop#readme",
+  "dependencies": {
+    "typescript": "^4.7.3"
+  }
+}
