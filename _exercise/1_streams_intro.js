@@ -1,5 +1,3 @@
-const {createReadStream, ReadStream, WriteStream} = require('fs');
-
 // before we start here are some facts
 // process.argv HOLDS ARRAY WITH SOME DATA
 // HERE IS HOW IT LOOKS
@@ -37,9 +35,6 @@ process.stdin.on("data", (data) => {
   process.exit()
   // 
 })
-
-
-
 
 
 // THIS IS WRITABLE STREAM (ALI OVO JE CIRCULAR REFERENCE)
