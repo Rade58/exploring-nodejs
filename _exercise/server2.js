@@ -20,6 +20,8 @@ const server = http.createServer(async (req, res) => {
       // IT IS A STRING E CAN PARSE LIKE THIS
     const data = querystring.parse(buff)
 
+    console.log({buff})
+
     console.log(typeof data === "object")
     console.log({data})
 
