@@ -11,14 +11,12 @@ const server = http.createServer(async (req, res) => {
   // YOU NEED TO KNOW THIS ONE THING
   // req    IS ALSO A READABLE STREAM
   
-  
   // SO WE CAN USE pipe
-
 
   req.pipe(concat((buff) => {
 
     // IT IS OBVIOUS WHAT WE DID HERE
-    
+
     if(buff.length > 26) {
       res.statusCode = 416
       res.statusMessage = "Range exceeded"
@@ -27,10 +25,8 @@ const server = http.createServer(async (req, res) => {
       res.statusCode = 200
       res.end("ok")
     }
-
+    
   }))
-
-
 
 })
 
