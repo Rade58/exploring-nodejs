@@ -17,20 +17,21 @@ const server = http.createServer(async (req, res) => {
       res.statusCode = 416
       res.statusMessage = "Range exceeded"
 
-
       return res.end()
     }else{
-      next(null, "")
+      next(null, null)
     }
     
 
+  })).pipe(concat((b) => {
+    console.log({b})
+  
+  res.statusCode = 200
+  return  res.end("ok")
+  
   }))
 
 
-  
-  // res.statusCode = 200
-  // return  res.end("ok")
-  
 
 })
 
