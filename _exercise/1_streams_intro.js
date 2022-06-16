@@ -4,24 +4,22 @@ const {Transform} = require("stream")
 
 const through = require("through2")
 
-
-const writeToUppercase = (chunkBuffer, bufferEncoding, next ) => {
-  
+const writeToUppercase = (chunkBuffer, bufferEncoding, next ) => {  
   next(null, chunkBuffer.toString().toUpperCase())
 }
 
-// WE WILL BUILD A Transform INSTANCE
 const transform = new Transform({
-  // FUNCTION ABOVE WILL BE ASSIGNA AS transform OPTION
-  transform: writeToUppercase
+  transform: writeToUppercase,
+  // this is flush
+  flush: (next) => {
+    // 
+    console.log("flushing")
+  }
 })
-// WHICH WE CAN USE AS pipe ARGUMENT
 
-process.stdin
-// INSTEAD OF THIS
-// .pipe(through(writeToUppercase))
-// WE WILL USE THIS
+createReadStream(process.argv[2])
+//
 .pipe(transform)
-// 
+//
 .pipe(process.stdout)
 
