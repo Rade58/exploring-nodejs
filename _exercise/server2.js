@@ -4,29 +4,14 @@ const concat = require("concat-stream")
 
 const server = http.createServer(async (req, res) => {
 
-  if(req.method !== "POST") {
-    res.statusCode = 404
-    return res.end();
-  }
+  let byteCounter = 0
   
-  
-  req.pipe(concat(
-    // WITH THIS ARGUMENT
-    {encoding: "string"}
-    ,
-    // THIS IS NO LONGER BUFFER
-    (buff) => {
+  req.pipe(through((chunkBuff, buffEncoding, next) => {
+
     
-      // IT IS A STRING E CAN PARSE LIKE THIS
-    const data = querystring.parse(buff)
-
-    console.log({buff})
-
-    console.log(typeof data === "object")
-    console.log({data})
-
-
-    if(buff.length > 26) {
+    console.log({byteCounter})
+    
+    if(byteCounter > 26) {
       res.statusCode = 416
       res.statusMessage = "Range exceeded"
       return res.end()
@@ -35,11 +20,14 @@ const server = http.createServer(async (req, res) => {
       res.end("ok")
     }
     
+    // HERE YOU GO
+    byteCounter += chunkBuff.length;
+
   }))
 
 })
 
 
-server.listen(6661, () => {
+server.listen(6666, () => {
   console.log("server started")
 })
