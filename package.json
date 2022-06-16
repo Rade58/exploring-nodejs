@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Rade58/web-security-and-nodejs-workshop#readme",
   "dependencies": {
+    "concat-stream": "^2.0.0",
     "through2": "^4.0.2",
     "typescript": "^4.7.3"
   },
