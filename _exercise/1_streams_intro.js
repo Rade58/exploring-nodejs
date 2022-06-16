@@ -11,7 +11,7 @@ const writeToUppercase = (chunkBuffer, bufferEncoding, next ) => {
 const transform = new Transform({
   transform: writeToUppercase,
   // this is flush
-  flush: (next) => {
+  flush: (cllback) => {
     // 
     console.log("flushing")
   }
