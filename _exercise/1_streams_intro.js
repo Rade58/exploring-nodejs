@@ -4,12 +4,17 @@ const {Transform} = require("stream")
 
 const through = require("through2")
 
-const writeToUppercase = (chunkBuffer, bufferEncoding, next ) => {  
+function writeToUppercase(chunkBuffer, bufferEncoding, next ) {  
   
+  // INSTEAD OF THIS
+  // next(null, chunkBuffer.toString().toUpperCase())
+  
+  // YOU CAN WRITE THIS
   this.push(chunkBuffer.toString().toUpperCase())
   next()
   
-  // next(null, chunkBuffer.toString().toUpperCase())
+  
+
 }
 
 const transform = new Transform({
@@ -23,8 +28,8 @@ const transform = new Transform({
 
 createReadStream(process.argv[2])
 //
-// .pipe(transform)
-.pipe(through(writeToUppercase))
+.pipe(transform)
+// .pipe(through(writeToUppercase))
 //
 .pipe(process.stdout)
 
