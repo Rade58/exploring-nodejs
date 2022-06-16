@@ -9,3 +9,10 @@ process.stdin.pipe(concat((buf) => {
 // THIS CAN'T BE PIPED ANYMORE SINCE CONCAT WAS THE WRITABLE STREAM
 
 
+// BUT LETS DO TRANSITIONAL METHOD AGAIN
+// LETS PRINT OUT LENGHTH OF EVERY BUFFER
+process.stdin.pipe(through((chunkBuffer,buffEncoding, next) => {
+
+  console.log(chunkBuffer.length)
+  next()
+}))
