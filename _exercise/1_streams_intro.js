@@ -7,15 +7,14 @@ console.log(process.argv)
 // WE WANT TO DEFINE FUNCTION WIH WILL DO UPPERCASE ON
 // A CHARACTER
 
-
-// THIS FUNCTION IS GOING 
-
+// FUNCTION WILL BE A PARAMETER OF THE through
+// FUNCTION, WHUCH WILL CREATE A TRAANSFORM STREAM FOR THE CHUNKS
 const writeToUppercase = (chunkBuffer, bufferEncoding, next ) => {
  
     // FIRST ARGUMENT IS ERROR (WE PASSED null FOR THAT)
+    // SECOND ARGUMENT IS CHUNK OF DATA FOR WHICH WE DEFINE
+    // TRANSFORMATION TO UPPERCASE
     next(null, chunkBuffer.toString().toUpperCase())
-
-
 }
 
 
