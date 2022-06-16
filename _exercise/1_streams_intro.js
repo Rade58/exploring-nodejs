@@ -1,5 +1,4 @@
 const {createReadStream} = require("fs")
-// W WILL USE THIS CONSTRUCTOR
 const {Transform} = require("stream")
 
 const through = require("through2")
