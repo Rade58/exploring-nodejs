@@ -1,33 +1,40 @@
 const http = require("http")
 const querystring = require("querystring")
 const concat = require("concat-stream")
+const through = require("through2")
 
 const server = http.createServer(async (req, res) => {
 
   let byteCounter = 0
   
-  req.pipe(through((chunkBuff, buffEncoding, next) => {
+  req.pipe(through(function (chunkBuff, buffEncoding, next){
 
     
+    byteCounter += chunkBuff.length;
     console.log({byteCounter})
     
     if(byteCounter > 26) {
       res.statusCode = 416
       res.statusMessage = "Range exceeded"
+
+
       return res.end()
     }else{
-      res.statusCode = 200
-      res.end("ok")
+      next(null, "")
     }
     
-    // HERE YOU GO
-    byteCounter += chunkBuff.length;
 
   }))
+
+
+  
+  // res.statusCode = 200
+  // return  res.end("ok")
+  
 
 })
 
 
-server.listen(6666, () => {
+server.listen(6661, () => {
   console.log("server started")
 })
