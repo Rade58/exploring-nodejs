@@ -12,8 +12,6 @@ function writeToUppercase(chunkBuffer, bufferEncoding, next ) {
   this.push(chunkBuffer.toString().toUpperCase())
   next()
   
-  
-
 }
 
 const transform = new Transform({
