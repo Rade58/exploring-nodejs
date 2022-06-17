@@ -1,6 +1,3 @@
-# CORE STREAMS IN NODE JS
-
-```js
 const {
   createReadStream, 
   createWriteStream
@@ -13,9 +10,5 @@ const {connect, createServer} = require("tls");
 process.stdin
 process.stdout
 process.stderr
-```
-
-THERE ARE ALSO HTTP REQUEST AND RESPONSE WE ARE GOING TO EXPLORE IN NEXT MD DOCUMENT
-
 
 
