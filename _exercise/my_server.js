@@ -1,8 +1,10 @@
 const {createServer} = require("http");
 const {createReadStream, createWriteStream} = require("fs")
 
-// LETS CREATE WRITABLE TREAM
-// AND WRITE DATA FROM THE  REQUEST INTO SOME FILE
+// LETS CREATE WRITABLE
+// AND PIPE DATA FROM THE  REQUEST INTO SOME FILE
+
+// LETS ALSO PIPE SOME DATA INTO RESPONSE
 
 const server = createServer(async (req, res) => {
   // 
@@ -17,10 +19,7 @@ const server = createServer(async (req, res) => {
     req.once("end", () => {
       
       writable.end()
-      console.log("PIPING ENDED")
       
-      res.statusCode = 200;
-
       // RESPONSE IS ALSO WRITABLE
       // LETS WRITE SOME THINGS TO IT
 
@@ -30,10 +29,25 @@ const server = createServer(async (req, res) => {
       // OR YOU DON'T NEED TO USE write AND PASS WHAT YOU WANT
       // TO THE .end
 
-      // BUT LETS USE BOTH
-      res.write("you are cool")
+      // BUT LETS CREATE A NEW READABLE FROM THE FILE
+      // WE JUST WRITTED TO
+      const readable = createReadStream("_exercise/data.json")
 
-      res.end()
+
+      // WHEN READING ENDS
+
+      readable.once("end", () => {
+
+        res.statusCode = 201;
+        
+        
+        res.end()
+      })
+      
+      res.setHeader("Content-type", "application/json")
+      
+      readable.pipe(res)
+      
 
     })
 
@@ -44,7 +58,6 @@ const server = createServer(async (req, res) => {
     res.end()
 
   }
-
 
 })
 
