@@ -9,7 +9,7 @@ const {createHash} = require("crypto");
 // I WANT HEX
 
 process.stdin
-  .pipe(createHash("sha512", {encoding: "hex"}))
+  .pipe(createHash("sha256", {encoding: "hex"}))
   .pipe(process.stdout);
 
 
