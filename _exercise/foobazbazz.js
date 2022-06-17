@@ -15,9 +15,7 @@ process.stdin
 writable.once("finish", () => {
 
   // WE CAN CREATE READABLE STREAM FROM COMPRESSED FILE
-  createReadStream("_exercise/some_compressed.gzip")
-  // WE UNCOMPRESS
-  .pipe(createGunzip())
+  createReadStream("_exercise/some_compressed_file.gzip")
   // WE HASH
   .pipe(createHash("sha256", {encoding: "hex"}))
   // AND PRINT OUT HASH AS STANDARD OUTPUT
