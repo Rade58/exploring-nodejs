@@ -20,7 +20,20 @@ const server = createServer(async (req, res) => {
       console.log("PIPING ENDED")
       
       res.statusCode = 200;
-      res.end("ok")
+
+      // RESPONSE IS ALSO WRITABLE
+      // LETS WRITE SOME THINGS TO IT
+
+      // AS YOU REMEMBER, WE CAN USE  .write
+      // AND WE EXECUTE .end TO CLOSE THE STREAM
+
+      // OR YOU DON'T NEED TO USE write AND PASS WHAT YOU WANT
+      // TO THE .end
+
+      // BUT LETS USE BOTH
+      res.write("you are cool")
+
+      res.end()
 
     })
 
