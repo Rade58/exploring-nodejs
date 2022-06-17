@@ -11,9 +11,14 @@ const server = createServer(async (req, res) => {
     const writable = createWriteStream("_exercise/data.json")
 
     req.pipe(writable);
+    
 
     // WHEN WRITING ENDS, WE SHOULD END
     req.once("end", () => {
+      
+      writable.end()
+      console.log("PIPING ENDED")
+      
       res.statusCode = 200;
       res.end("ok")
 
