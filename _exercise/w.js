@@ -9,9 +9,10 @@ const w2 = createWriteStream("_exercise/someFile2.txt")
 
 // THIS DOESN'T WORK
 // I TRIED, BUT EVENT DOESN'T TRIGGER AT ALL
-w1.on("finish", (a) => {
+w1.once("finish", (a) => {
   console.log("Hello World")
 })
+// w1.on ALSO DOESN'T WORK
 
  
 // KNOW THAT PREVIOUS DATA WILL BE ERASED 
