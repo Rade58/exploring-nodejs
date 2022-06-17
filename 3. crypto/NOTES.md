@@ -24,7 +24,7 @@ FAST TO COMPUTE
 
 EXAMPLE (NODEJS):
 
-`__NO_OPS/crypto-practice/1_hashing.js`
+`_exercise/crypto-practice/1_hashing.js`
 
 ```js
 const { createHash } = require("crypto");
@@ -67,7 +67,7 @@ console.log(hashOne === hashTwo); // ---> true
 WHEN WE DID THIS
 
 ```
-node __NO_OPS/crypto-practice/1_hashing.js
+node _exercise/crypto-practice/1_hashing.js
 ```
 
 WE GOT THIS OUTPUT
@@ -91,7 +91,7 @@ WE NEED RANDOMLY GENERATED THING CALLED SALT
 SEE EXAMPLE
 
 ```
-__NO_OPS/crypto-practice/2_salting.js
+_exercise/crypto-practice/2_salting.js
 ```
 
 ```js
@@ -231,7 +231,7 @@ GOOD EXAMPLE FOR THIS IS **JWT** OR `JSON WEB TOKEN`, YOU USED BEFORE
 
 LETS NOW PLAY A LITTLE BIT WITH HMAC
 
-FILE: `__NO_OPS/crypto-practice/3_hmac.js`
+FILE: `_exercise/crypto-practice/3_hmac.js`
 
 ```js
 // A SIMILAR METHOD LIKE createHash WE USED EARLIER
@@ -290,7 +290,7 @@ WHAT IS THEN SYMETRIC ENCRYPTION?
 
 LETS DO SOME PRACTICE WITH SYMETRIC ENCRYPTION
 
-FILE: `__NO_OPS/crypto-practice/4_symetric_encryption.js`
+FILE: `_exercise/crypto-practice/4_symetric_encryption.js`
 
 ```js
 // WE ARE GOING TO USE METHODS FOR CREATING CIPHER, ALSO FOR
@@ -378,7 +378,7 @@ PRIVATE KEY SHOULD BE ALWAYS KEPT SECRET, WHILE PUBLIC ONE CAN BE SHARED WITH OT
 OK, LETS DO AN EXAMPLE
 
 ```
-__NO_OPS/crypto-practice/5_keypairs.js
+_exercise/crypto-practice/5_keypairs.js
 ```
 
 ```js
@@ -474,7 +474,7 @@ module.exports = {
 
 HERE IS A GOOD DIAGRAM THAT SOWS HOW ASYMETRIC ENCRIOTION WORKS
 
-![asymetric encription](/__NO_OPS/asymetricencription.png)
+![asymetric encription](/_exercise/asymetricencription.png)
 
 SO WE ENCRYPT BY USING PUBLIC KEY, AND THEN WE USE PRIVATE KEY TO DECRYPT
 
@@ -482,7 +482,7 @@ SO WE ENCRYPT BY USING PUBLIC KEY, AND THEN WE USE PRIVATE KEY TO DECRYPT
 
 LETS SEE HOW ASYMETRIC ENCRIPTION CAN BE USED INSIDE NODEJS
 
-FILE: `__NO_OPS/crypto-practice/6_asymetric_encription.js`
+FILE: `_exercise/crypto-practice/6_asymetric_encription.js`
 
 ```js
 // WE WILL USE THESE METHODS
@@ -553,7 +553,7 @@ YOU NEED TO ABLE TO REAST THAT THAT MESSAGE CAME FROM THE RIGHT PERSON; SO YOU R
 
 **LETS CREATE SIGNATURE IN NODEJS**
 
-FILE: `__NO_OPS/crypto-practice/7_signing.js`
+FILE: `_exercise/crypto-practice/7_signing.js`
 
 ```js
 // WE WILL USE THESE FUNCTIONS
