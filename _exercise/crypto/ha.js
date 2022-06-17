@@ -4,6 +4,12 @@ const {createHash} = require("crypto");
 // WE CAN USE STANDARD IN AND PIPE IT TO THE HASH STREAM, AND PIPE THAT AGAIN TO STANDATRD OUT
 // TO PRINT OUT HASH
 
-process.stdin.pipe(createHash("sha512")).pipe(process.stdout);
+// REMEMBER THAT YOU CAN CHANGE EMCODING OF HASH
+// IT IS BINARY BE DEFAULT
+// I WANT HEX
+
+process.stdin
+  .pipe(createHash("sha512", {encoding: "hex"}))
+  .pipe(process.stdout);
 
 
