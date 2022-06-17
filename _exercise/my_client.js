@@ -15,7 +15,7 @@ const req = request({
 
 })
 
-process.stdin.on("end", () => {
+process.stdin.once("end", () => {
   
   req.end()
 
