@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-
 "use strict"
 
-// WE USE THIS PACKAGE
 const minimist = require("minimist")
 
-// AND WE PASS THE ARGV
-const argv = minimist(process.argv)
+// WE JUST SPECIFY THAT IN OPTIONS
+const argv = minimist(process.argv, {
+  boolean: ["help"],
+  string: ["file"]
+})
 
 console.log(argv)
 
