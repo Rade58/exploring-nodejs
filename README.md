@@ -1,4 +1,4 @@
-# WEB SECURITY AND NodeJS WORKSHOP
+# EXPLORING NodeJS
 
 TABLE OF CONTENT:
 
@@ -6,4 +6,6 @@ TABLE OF CONTENT:
 
 [2. STREAMS](/2.%20STREAMS/)
 
-[3. crypto package](/3.%20crypto/)
+[3. crypto PACKAGE](/3.%20crypto/)
+
+[4. Poking around NodeJS](/4.%20Poking%20around%20NodeJS/)
