@@ -2,3 +2,4 @@
 
 "use strict"
 
+process.stdout.write("Shibonk")

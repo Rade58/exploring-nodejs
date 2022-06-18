@@ -30,6 +30,7 @@ I AM TELLING YOU THIS BECAUSE NORMALLY WHEN YOU'RE USING STRICT MODE `"use stric
 #!/usr/bin/env node
 
 "use strict"
+
 ```
 
 # WE NEED TO CHANGE MODE OF THE FILE TO ALLOW HIM TO BE RUNNED AGAINS EXECUTABLE
@@ -68,6 +69,21 @@ IT IS OK NOW
 -rwxrw-r-- 1 rade rade 35 јун 18 20:04
 ```
 
+**NOW WE CAN RUN A PROGRRAM WITHOUT SPECIFING `node` AS EXECUTABLE**
+
+```js
+#!/usr/bin/env node
+
+"use strict"
+
+// I ADDED THIS
+process.stdout.write("Shibonk")
+
+```
+
+**LETS RUN IT**
 
 
+`_exercise/shell_scripts/foo.js`
 
+IT WORKS, IT DID PRINTED OUT WHAT WE SPECIFIED
