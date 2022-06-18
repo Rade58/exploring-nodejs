@@ -12,9 +12,8 @@ const argv = minimist(process.argv, {
   string: ["file"],  
 })
 
-console.log(argv["file"])
-
-console.log(argv)
+// console.log(argv["file"])
+// console.log(argv)
 
 if(argv["help"]){
   printHelp()
@@ -22,13 +21,20 @@ if(argv["help"]){
   // WE READ THE FILE
 
   const absPath = path.resolve(argv["file"])
+  try{
+    const fileContent = fs.readFileSync(absPath)
 
-  const fileContent = fs.readFileSync(absPath)
-  
-  // console.log(fileContent)
-  console.log(absPath)
+  }catch(err){
 
-  process.stdout.write(fileContent)
+    return console.error(err.message);
+
+  }
+
+  if(fileContent.toString("utf8").length === 0){
+    return process.stdout.write("Empty file")
+  }
+
+  return process.stdout.write(fileContent)
 
 }else{
   error("Wrong stuff", true)
