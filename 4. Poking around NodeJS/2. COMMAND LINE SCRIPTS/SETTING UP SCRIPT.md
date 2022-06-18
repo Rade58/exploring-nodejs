@@ -59,7 +59,7 @@ chmod u+x _exercise/shell_scripts/foo.js
 LETS CHECK DO WE HAVE PERMISSION NOW
 
 ```
-ls -la _exercise/shell_scripts/foo.js 
+ls -l _exercise/shell_scripts/foo.js 
 ```
 
 IT IS OK NOW
