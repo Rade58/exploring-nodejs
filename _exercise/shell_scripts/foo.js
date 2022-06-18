@@ -30,8 +30,9 @@ if(argv["help"]){
     if(fileContent.toString("utf8").length === 0){
       return process.stdout.write("Empty file\n")
     }
-  
-    process.stdout.write({fileContent: fileContent.toString("utf8")})
+    
+    // YOU CAN PASS BUFFER HERE
+    process.stdout.write(fileContent)
     
   }catch(err){
 
