@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 "use strict"
 
-const minimist = require("minimist")
+const minimist = require("minimist");
 
-// WE JUST SPECIFY THAT IN OPTIONS
 const argv = minimist(process.argv, {
   boolean: ["help"],
-  string: ["file"]
+  string: ["file"],
+  // I ADDED THIS
+  default: {
+    file: "/_exercise/bazbaz.js",
+    help: true
+  }
 })
 
 console.log(argv)
-
-
-
 
 // *************************
 function getHelp(){
