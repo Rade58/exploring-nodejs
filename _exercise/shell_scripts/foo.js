@@ -26,7 +26,11 @@ if(argv["help"]){
   const absPath = path.resolve(argv["file"])
   try{
     const fileContent = fs.readFileSync(absPath)
-
+    
+    if(fileContent.toString("utf8").length === 0){
+      return process.stdout.write("Empty file\n")
+    }
+  
     console.log({fileContent: fileContent.toString("utf8")})
 
     return;
@@ -37,17 +41,10 @@ if(argv["help"]){
 
   }
 
-  if(fileContent.toString("utf8").length === 0){
-    return process.stdout.write("Empty file")
-  }
-
-  return process.stdout.write(fileContent)
 
 }else{
   error("Wrong stuff", true)
 }
-
-
 
 
 
