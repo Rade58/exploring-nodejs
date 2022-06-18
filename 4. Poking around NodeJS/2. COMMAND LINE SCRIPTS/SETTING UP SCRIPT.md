@@ -43,9 +43,9 @@ ls -la _exercise/shell_scripts/
 ```
 
 ```
-drwxrwxr-x 2 eidolon eidolon 4096 јун 18 19:44 .
-drwxrwxr-x 6 eidolon eidolon 4096 јун 18 19:44 ..
--rw-rw-r-- 1 eidolon eidolon   35 јун 18 20:04 foo.js
+drwxrwxr-x 2 rade rade 4096 јун 18 19:44 .
+drwxrwxr-x 6 rade rade 4096 јун 18 19:44 ..
+-rw-rw-r-- 1 rade rade   35 јун 18 20:04 foo.js
 ```
 
 AS YOU CAN SEE WE DON'T HAVE EXECUTE PERMISSION, SO WE NEED TO CHANGE THAT
@@ -53,7 +53,19 @@ AS YOU CAN SEE WE DON'T HAVE EXECUTE PERMISSION, SO WE NEED TO CHANGE THAT
 THIS MEANS WE ARE SETTING FILE TO BE ALLOWED TO BE RUNNED AGAINST EXECUTABLE FOR A **USER** (FOR GROUP OR OTHERS IT DOESN'T NEED TO BE) (**x** MEANS EXECUTE)
 
 ```
+chmod u+x _exercise/shell_scripts/foo.js 
+```
 
+LETS CHECK DO WE HAVE PERMISSION NOW
+
+```
+ls -la _exercise/shell_scripts/foo.js 
+```
+
+IT IS OK NOW
+
+```
+-rwxrw-r-- 1 rade rade 35 јун 18 20:04
 ```
 
 
