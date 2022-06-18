@@ -17,12 +17,6 @@ if(argv["help"]){
 
   const absPath = path.resolve(argv["file"])
   
-
-    // LETS READ FILE ASYNCHRONOUSLY
-    // WE CAN'T USE PROMISES BECAUSE THIS IS
-    // OLD PACKAGE, BUT WE CAN WRAP PROMISE
-    // BUT I AM NOT DOING THIS NOW
-    // SO LETS JUST USE CALLBACKS
     fs.readFile(absPath, (err, buff) => {
 
       if(err){
@@ -33,8 +27,12 @@ if(argv["help"]){
         return process.stdout.write("Empty file\n")
       }
       
-      // YOU CAN PASS BUFFER HERE
-      process.stdout.write(buff)
+      // LETS DO SOME PROCESSING
+      const upperContent = buff.toString("utf8").toUpperCase()
+
+      // LETS ADD THIS TO STANDARD OUT
+
+      process.stdout.write(upperContent)
       
 
     })
