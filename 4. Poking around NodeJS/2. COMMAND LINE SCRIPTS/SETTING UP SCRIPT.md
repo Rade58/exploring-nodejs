@@ -87,3 +87,8 @@ process.stdout.write("Shibonk")
 `_exercise/shell_scripts/foo.js`
 
 IT WORKS, IT DID PRINTED OUT WHAT WE SPECIFIED
+
+# ALWAYS DEFINE SOME HELP OUTPUT INSIDE YOUR SHELL SCRIPTS
+
+
+
