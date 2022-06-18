@@ -9,7 +9,6 @@ const argv = minimist(process.argv, {
   // I ADDED THIS
   default: {
     file: "/_exercise/bazbaz.js",
-    help: true
   }
 })
 
