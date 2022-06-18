@@ -2,4 +2,8 @@
 
 TABLE OF CONTENT:
 
-[NETWORKING](/1.%20NETWORKING/)
+[1. NETWORKING](/1.%20NETWORKING/)
+
+[2. STREAMS](/2.%20STREAMS/)
+
+[3. crypto package](/3.%20crypto/)
