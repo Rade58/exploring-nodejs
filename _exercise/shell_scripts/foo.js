@@ -2,13 +2,15 @@
 
 "use strict"
 
+// WE USE THIS PACKAGE
+const minimist = require("minimist")
 
-
-// getHelp()
-
-const argv = process.argv.slice(2)
+// AND WE PASS THE ARGV
+const argv = minimist(process.argv)
 
 console.log(argv)
+
+
 
 
 // *************************
