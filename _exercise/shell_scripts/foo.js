@@ -2,9 +2,15 @@
 
 "use strict"
 
-process.stdout.write("Shibonk")
+// process.stdout.write("Shibonk")
 
-getHelp()
+// getHelp()
+
+// SEE
+
+console.log(process.argv)
+console.log(process.argv0)
+
 
 
 // *************************
