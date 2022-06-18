@@ -90,9 +90,40 @@ IT WORKS, IT DID PRINTED OUT WHAT WE SPECIFIED
 
 # ALWAYS DEFINE SOME HELP OUTPUT INSIDE YOUR SHELL SCRIPTS
 
-THAT WOULD LOOK LIKE THIS
+WOULD LOOK LIKE THIS
 
 ```js
+#!/usr/bin/env node
 
+"use strict"
+
+process.stdout.write("Shibonk")
+
+getHelp()
+
+
+// *************************
+function getHelp(){
+  console.log(`
+    foo.js --help
+
+  --help          try getting help
+  `)
+}
 ```
 
+RUN IT
+
+```
+_exercise/shell_scripts/foo.js
+```
+
+OUTPUT
+
+```
+Shibonk
+    foo.js --help
+
+  --help          try getting help
+
+```
