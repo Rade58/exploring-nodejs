@@ -11,7 +11,7 @@ WE GOT OT SAY TO SCRIPT WHERE TO FIND NODE EXECUTABLE IN OUR SYSTEM
 WE ARE DOING THIS BY ADDING SHEBANG WHERE WE SPECIFY THE PATH TO NOODEJS
 
 ```
-touch _exercise/bash_scripts/foo.js
+touch _exercise/shell_scripts/foo.js
 ```
 
 ```js
@@ -31,3 +31,31 @@ I AM TELLING YOU THIS BECAUSE NORMALLY WHEN YOU'RE USING STRICT MODE `"use stric
 
 "use strict"
 ```
+
+# WE NEED TO CHANGE MODE OF THE FILE TO ALLOW HIM TO BE RUNNED AGAINS EXECUTABLE
+
+WE NEED TO USE chmod COMMAND
+
+LOOK PERMISSIONS OF YOUR JAVASCRIPT FILES
+
+```
+ls -la _exercise/shell_scripts/
+```
+
+```
+drwxrwxr-x 2 eidolon eidolon 4096 јун 18 19:44 .
+drwxrwxr-x 6 eidolon eidolon 4096 јун 18 19:44 ..
+-rw-rw-r-- 1 eidolon eidolon   35 јун 18 20:04 foo.js
+```
+
+AS YOU CAN SEE WE DON'T HAVE EXECUTE PERMISSION, SO WE NEED TO CHANGE THAT
+
+THIS MEANS WE ARE SETTING FILE TO BE ALLOWED TO BE RUNNED AGAINST EXECUTABLE FOR A **USER** (FOR GROUP OR OTHERS IT DOESN'T NEED TO BE) (**x** MEANS EXECUTE)
+
+```
+
+```
+
+
+
+
