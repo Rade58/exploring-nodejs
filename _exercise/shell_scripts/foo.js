@@ -6,11 +6,10 @@
 
 // getHelp()
 
-// SEE
+// DOING THIS
+const argv = process.argv.slice(2)
 
-console.log(process.argv)
-console.log(process.argv0)
-
+console.log(argv)
 
 
 // *************************
