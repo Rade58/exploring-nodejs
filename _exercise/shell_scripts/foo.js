@@ -31,16 +31,13 @@ if(argv["help"]){
       return process.stdout.write("Empty file\n")
     }
   
-    console.log({fileContent: fileContent.toString("utf8")})
-
-    return;
+    process.stdout.write({fileContent: fileContent.toString("utf8")})
     
   }catch(err){
 
-    return console.error(err.message);
+    return process.stderr.write(err.message + "\n");
 
   }
-
 
 }else{
   error("Wrong stuff", true)
