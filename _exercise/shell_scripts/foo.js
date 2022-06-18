@@ -2,11 +2,10 @@
 
 "use strict"
 
-// process.stdout.write("Shibonk")
+
 
 // getHelp()
 
-// DOING THIS
 const argv = process.argv.slice(2)
 
 console.log(argv)
