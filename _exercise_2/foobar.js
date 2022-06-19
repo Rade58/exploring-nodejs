@@ -4,29 +4,26 @@
 const {createReadStream} = require("fs")
 const path = require("path")
 
-// WE AR USING THIS PACKAGE
 const {Transform} = require("stream")
 
 const minimist = require("minimist");
 
-// WE CAN MAKE NEW TRANSFORMASSION
-// MAKING ALL CHUNKS TO BE UPPERCASE
-
+// LETS USE COUNTER
 let num = 0;
 
-// THERE IS A COUPLE OF WAYS WE CAN DO THIS
 const transToUpperCase = new Transform({
 
   // THIS WAY THIS CAN BE AN ARROW FUNCTION
   transform: (chunkBuff, chunkEnc, next) => {
     
-    // I JUST WANT TO PRINT OUT AND POINT OUT THAT HERE IT IS GOING TO BE ONLY ONE
-    // BUFFER
+    // OK, LETS PRINT OUT THE CHUNK
     console.log({chunkBuff})
+    // INCREMENTING
     num++;
-
-    next(null, num + "\n")
+    // INSTEAD OF PASSING TRANSFORMED DATA
     // next(null, chunkBuff.toString().toUpperCase())
+    // LETS PASS INCREMENT, BUT YOU NEED TO TURN IT TO STRING
+    next(null, num + "\n")
 
   }
 })
@@ -47,24 +44,17 @@ if(!args["file"]){
 }
 
 
-  // WE CAN HERE TRY READING FROM A FILE
-
 const filePath = path.resolve(args["file"])
 
 
 const neuReadStream = createReadStream(filePath)
 
-
-// WE CAN HANDLE EROR HERE
 neuReadStream.on("error", (err) => {
 
   printError(err.message)
 })
 
-
-// WE CAN PIPE TO THE STANDARD OUT
 neuReadStream.pipe(transToUpperCase).pipe(process.stdout);
-// 
 
 // *****************************************
 
