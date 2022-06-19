@@ -4,8 +4,24 @@
 const {createReadStream} = require("fs")
 const path = require("path")
 
+// WE AR USING THIS PACKAGE
+const {Transform} = require("stream")
 
 const minimist = require("minimist");
+
+// WE CAN MAKE NEW TRANSFORMASSION
+// MAKING ALL CHUNKS TO BE UPPERCASE
+
+// THERE IS A COUPLE OF WAYS WE CAN DO THIS
+const toUpperCase = new Transform({
+  transform(chunkBuff, chunkEnc, next) {
+    
+    console.log({chunkBuff})
+
+    next(null, chunkBuff.toString().toUpperCase())
+
+  }
+})
 
 
 const args = minimist(process.argv.slice(2), {
