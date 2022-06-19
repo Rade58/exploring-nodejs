@@ -1,3 +1,3 @@
-const a = process.stdin
+const data = process.env.HI
 
-console.log(a)
+console.log({data})
