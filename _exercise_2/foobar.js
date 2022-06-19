@@ -4,29 +4,35 @@
 const {createReadStream} = require("fs")
 const path = require("path")
 
-// WE ARE USING THIS PACKAGE
 const {Transform} = require("stream")
 
 const minimist = require("minimist");
 
 
-// LETS CREATE TRNSFORMATION
+
 const transToUpperCase = new Transform({
 
-  // REMEBER THAT IF YOU DEFINE THIS AS AN ARROW FUNC
-  // YOU CAN'T USE      this
-  transform: (chunkBuff, chunkEnc, next) => {
+  // NOW THIS CAN'T BE AN ARROW FUNC
+  transform(chunkBuff, chunkEnc, next) {
     
     
+    // OK, NOW LETS NOT USE THIS SYNATAX
+    // next(null, chunkBuff.toString().toUpperCase())
 
-    // I LIKE DOING THINGS LIKE THIS
-    next(null, chunkBuff.toString().toUpperCase())
+    // SINCE WE WANT TO DELAY CALLING OF    next()
 
-    // SOME PEOPLE ARE USING        this.push
-    // LIKE THIS
+    // WE WILL USE push
+    this.push(chunkBuff.toString().toUpperCase())
 
-    //      this.push(chunkBuff.toString().toUpperCase())
-    //      next()
+    // AND WE WILL DEFINE DELAYED GOING TO THE NEXT CHUNK
+    // SINCE CALLING next WILL TURN YOU TO NEXT CHUNK
+    // IF YOU REMEMBE
+    setTimeout(() => {
+
+      next()
+
+    }, 3000)
+
 
   }
 })
