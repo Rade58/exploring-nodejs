@@ -4,26 +4,30 @@
 const {createReadStream} = require("fs")
 const path = require("path")
 
+// WE ARE USING THIS PACKAGE
 const {Transform} = require("stream")
 
 const minimist = require("minimist");
 
-// LETS USE COUNTER
-let num = 0;
 
+// LETS CREATE TRNSFORMATION
 const transToUpperCase = new Transform({
 
-  // THIS WAY THIS CAN BE AN ARROW FUNCTION
+  // REMEBER THAT IF YOU DEFINE THIS AS AN ARROW FUNC
+  // YOU CAN'T USE      this
   transform: (chunkBuff, chunkEnc, next) => {
     
-    // OK, LETS PRINT OUT THE CHUNK
-    console.log({chunkBuff})
-    // INCREMENTING
-    num++;
-    // INSTEAD OF PASSING TRANSFORMED DATA
-    // next(null, chunkBuff.toString().toUpperCase())
-    // LETS PASS INCREMENT, BUT YOU NEED TO TURN IT TO STRING
-    next(null, num + "\n")
+    
+
+    // I LIKE DOING THINGS LIKE THIS
+    next(null, chunkBuff.toString().toUpperCase())
+
+    // SOME PEOPLE ARE USING        this.push
+    // LIKE THIS
+
+    //      this.push(chunkBuff.toString().toUpperCase())
+    //      next()
+
 
   }
 })
