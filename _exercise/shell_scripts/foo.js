@@ -9,15 +9,10 @@ const minimist = require("minimist");
 
 
 
-
-
-
 const argv = minimist(process.argv, {
   boolean: ["help"],
   string: ["file","in"],  
 })
-
-
 
 // THING IS THAT THIS PCKAGE CAN'T BE USED WITH require
 // IT 
