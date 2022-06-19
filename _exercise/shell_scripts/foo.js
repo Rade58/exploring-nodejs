@@ -24,9 +24,9 @@ const argv = minimist(process.argv, {
 
 // YOU NEED DYNAMIC IMPORT
 import("get-stdin")
-  .then((package) => {
+  .then((ourModule) => {
     // IT'S A DEFAU;T IMPORT
-    package.default().then(value => {
+    ourModule.default().then(value => {
       
       // THIS IS A STRING
       // A VALUE PARSED FROM STANDARD INPUT STREAM
