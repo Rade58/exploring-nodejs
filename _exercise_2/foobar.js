@@ -10,9 +10,13 @@ const {Transform} = require("stream")
 const minimist = require("minimist");
 
 
-// WE WILL CREATE WRITE STREAM
-// IN HERE WE DEFINE A PATH WHERE STREAM WILL OUTPUT ITS DATA
 const myWriteStream = createWriteStream("_exercise_2/some_file.txt")
+
+// ADDING AN EVENT
+myWriteStream.once("finish", () => {
+  process.stdout.write("You wrote to file\n")
+})
+
 
 const transToUpperCase = new Transform({
 
@@ -53,8 +57,6 @@ neuReadStream.on("error", (err) => {
 })
 
 
-// INSTEAD OF PIPING INTO STANDAR OUT
-// PIPE TO THE WRITABLE STREM WE SETTED FOR A FILE
 neuReadStream.pipe(transToUpperCase).pipe(myWriteStream);
 
 // *****************************************
