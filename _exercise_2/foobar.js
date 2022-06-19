@@ -13,9 +13,13 @@ const minimist = require("minimist");
 // MAKING ALL CHUNKS TO BE UPPERCASE
 
 // THERE IS A COUPLE OF WAYS WE CAN DO THIS
-const toUpperCase = new Transform({
-  transform(chunkBuff, chunkEnc, next) {
+const transToUpperCase = new Transform({
+
+  // THIS WAY THIS CAN BE AN ARROW FUNCTION
+  transform: (chunkBuff, chunkEnc, next) => {
     
+    // I JUST WANT TO PRINT OUT AND POINT OUT THAT HERE IT IS GOING TO BE ONLY ONE
+    // BUFFER
     console.log({chunkBuff})
 
     next(null, chunkBuff.toString().toUpperCase())
@@ -55,7 +59,7 @@ neuReadStream.on("error", (err) => {
 
 
 // WE CAN PIPE TO THE STANDARD OUT
-neuReadStream.pipe(process.stdout);
+neuReadStream.pipe(transToUpperCase).pipe(process.stdout);
 
 
 // *****************************************
