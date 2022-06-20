@@ -38,7 +38,7 @@ const filePath = path.resolve(args["file"])
 // WRITE STREAM WITH .gzip EXTENSION
 // THAT IS WHY WE ARE USING TERNARY
 const myWriteStream = createWriteStream(
-  "_exercise_2/some_file.txt" + args["compress"] ? ".gzip":""
+  "_exercise_2/some_file.txt" + ( args["compress"] ? ".gzip":"")
 )
 
 myWriteStream.once("finish", () => {
