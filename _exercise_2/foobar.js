@@ -65,10 +65,31 @@ neuReadStream.on("error", (err) => {
   printError(err.message)
 })
 
-// WE DON'T NEED TO CHANGE ANYTHING IN HERE
-neuReadStream
+// WE NEED TO PIPE TO COMPRESSION STREAM
+// CONDITIONALLY
+// SO INSTEAD OF THIS WHICH WE HAD EARLIER
+// neuReadStream
+  // .pipe(transToUpperCase)
+  // .pipe(myWriteStream);
+
+// WE DECLARE VARIABLE 
+const toUpperCaseStream = neuReadStream
   .pipe(transToUpperCase)
-  .pipe(myWriteStream);
+
+// AND THE REST OF PIPING IS CONDITIONAL
+
+let ourNewStream;
+
+if(args["compress"]){
+
+  ourNewStream = toUpperCaseStream.pipe(createGzip())
+
+}else{
+  ourNewStream = toUpperCaseStream
+}
+
+// WE THEN CAN PIPE TO FILE
+ourNewStream.pipe(myWriteStream)
 
 
 // *****************************************
