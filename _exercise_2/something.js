@@ -39,12 +39,12 @@ async function main() {
   try{
 
     const streams = await pipeAsync(readStream, writeStream)
-
+    return streams
 
   }catch(err){
 
     console.error(err)
-
+    
   }
 
   // THIS SHOULD BE PRINTED AFTER PIPING HAPPENS
