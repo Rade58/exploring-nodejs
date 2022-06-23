@@ -9,7 +9,7 @@ const DB_SQL_PATH = path.resolve(__dirname, "../mydb.sql");
 
 const initSql = readFileSync(DB_SQL_PATH, "utf-8");
 
-console.log({initSql})
+// console.log({initSql})
 
 
 // THIS IS GOING TO BE OUR HELPERS, LIKE I TOLD YOU
