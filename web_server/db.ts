@@ -12,7 +12,7 @@ async function initDB(){
   
   const myDB = new Database(DB_PATH);
 
-const SQL3 = {
+  const SQL3 = {
     run(sql: string){
       return new Promise((res, rej) => {
         myDB.run(sql, function (err) {
