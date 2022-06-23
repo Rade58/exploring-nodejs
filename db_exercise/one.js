@@ -4,17 +4,10 @@ const {promisify} = require("util");
 const {Database} = require("sqlite3")
 
 const DB_PATH = path.join(__dirname,"my.db");
-
 const DB_SQL_PATH = path.resolve(__dirname, "../mydb.sql");
-
 const initSql = readFileSync(DB_SQL_PATH, "utf-8");
 
-// console.log({initSql})
-
-
-// THIS IS GOING TO BE OUR HELPERS, LIKE I TOLD YOU
-let SQL3; // (WE WILL DECLARE THEM ON THIS OBJEECT)
-
+let SQL3;
 
 async function main(){
   
@@ -34,13 +27,32 @@ async function main(){
     exec: promisify(myDB.exec.bind(myDB))
   }
 
-  // 
-  // WE CAN PASS SQL CODE 
+
   await SQL3.exec(initSql)
 
 }
 
 main()
+
+
+// LETS DEFINE METHOD FOR GETTING ONE RECORD BY info FIELD
+const getShibaByInfo = async (infoVal) => {
+  // ON THE PLACE OF ? AN PROVIDED
+  // ARGUMENT IS GOING TO BE PASSED
+  const result = await SQL3.get(`
+    SELECT id FROM Shiba WHERE info = ?
+  `)
+
+  return result
+}
+
+
+// LETS TRY IT
+getShibaByInfo("foobar")
+  .then(record => {
+    console.log({record})
+  })
+
 
 
 
