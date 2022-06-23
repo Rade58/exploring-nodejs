@@ -35,10 +35,9 @@ async function main(){
 main()
 
 
-// LETS DEFINE METHOD FOR GETTING ONE RECORD BY info FIELD
+
 const getBonkByInfo = async (info) => {
-  // ON THE PLACE OF ? AN PROVIDED
-  // ARGUMENT IS GOING TO BE PASSED
+  
   const result = await SQL3.get(/* sql */`
     SELECT * FROM Bonk WHERE info = ?
   `,
@@ -48,10 +47,8 @@ const getBonkByInfo = async (info) => {
 }
 
 
-// METHOD FOR INSERTING RECORD INTO DB
 const insertBonk = async (info) => {
 
-  // AGAIN, ? MEANS THE SAME AS ABOVE
   return SQL3.run(/* sql */`
     INSERT INTO Bonk (info) VALUES (?) 
   `,
@@ -60,27 +57,65 @@ const insertBonk = async (info) => {
 
 }
 
+// OK, WE CAN DEFINE NEW METHODS
+// BUT LETS DEFINE THAT WE GET BY REFERENCE RECORD
+// AND LETS GET IT BY REFERENCE REC VALUE
+// SO WE NEED TO DO A LEFT JOIN
+const getShibaByBonkInfo = async (bonkInfo) => {
+  
+  return SQL3.get(/* sql */`
+    SELECT * FROM Shiba
+    LEFT JOIN Bonk 
+    ON Shiba.bonkId = Bonk.id
+    WHERE Bonk.info = ?
+  `,
+  bonkInfo)
+
+}
+
+// NOW THE INSERTION METHOD
+// WE WILL SET A REFERENCE HERE
+const insertShiba = async (info, bonkId) => {
+
+  return SQL3.run(/* sql */`
+    INSERT INTO Shiba (info, bonkId) VALUES (?, ?)
+  `, info, bonkId)
+}
 
 
-// LETS TRY IT
-// WE SHOULD GET undefined BECAUSE WE DIDN'T INSERT ANY RECORDS
+
 getBonkByInfo("foobar")
   .then( async record => {
-    // THIS SHOULD BE undefined
+
     console.log({record})
 
-    // LETS INSERT IT
     await insertBonk("Shibetoshi Nakato")
 
-    // LETS SEE IF RECORD IS INSERTED
-    // LETS PASS INVALID STRING UNPURPOSE
     const rec1 = await getBonkByInfo("Suzuki Nakamoto")
 
-    // THIS SHOULD BE undefined
     console.log({rec1})
 
-
     const rec2 = await getBonkByInfo("Shibetoshi Nakato")
-    // THIS SHOULD BE OUR RECORD
+
     console.log({rec2})
+
+
+    // LETS CONTINUE HERE SINCE THIS ASYNC FUNCTION IS CONVINIENT
+    // TO TEST THINGS OUT
+    await insertShiba("Hello World", 1)
+
+    // LETS GET WHAT WE INSERTED
+    const rec3 = await getShibaByBonkInfo("Shibetoshi Nakato")
+
+    // THIS SHOULD BE OUR RECORD THAT WE FOUND THROUGH
+    // OTHER RECORD THAT IS REFERENCE
+    console.log({rec3})
+
+
+
+
+
   })
+
+
+
