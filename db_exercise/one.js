@@ -48,13 +48,8 @@ const getShibaByInfo = async (infoVal) => {
 
 
 // LETS TRY IT
+// WE SHOULD GET undefined BECAUSE WE DIDN'T INSERT ANY RECORDS
 getShibaByInfo("foobar")
   .then(record => {
     console.log({record})
   })
-
-
-
-
-
-
