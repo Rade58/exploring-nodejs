@@ -36,26 +36,26 @@ main()
 
 
 // LETS DEFINE METHOD FOR GETTING ONE RECORD BY info FIELD
-const getBonkByInfo = async (infoVal) => {
+const getBonkByInfo = async (info) => {
   // ON THE PLACE OF ? AN PROVIDED
   // ARGUMENT IS GOING TO BE PASSED
-  const result = await SQL3.get(`
+  const result = await SQL3.get(/* sql */`
     SELECT id info FROM Bonk WHERE info = ?
   `,
-  infoVal)
+  info)
 
   return result
 }
 
 
 // METHOD FOR INSERTING RECORD INTO DB
-const insertBonk = async (data) => {
+const insertBonk = async (info) => {
 
   // AGAIN, ? MEANS THE SAME AS ABOVE
-  return SQL3.run(`
+  return SQL3.run(/* sql */`
     INSERT INTO Bonk (info) VALUES (?) 
   `,
-  data
+  info
   )
 
 }
