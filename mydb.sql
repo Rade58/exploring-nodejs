@@ -3,7 +3,7 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE IF NOT EXISTS Shiba (
   id INTEGER PRIMARY KEY ASC,
   bonkId INTEGER,
-  info INTEGER,
+  info VARCHAR(5),
 
   FOREIGN KEY (bonkId) REFERENCES Bonk(id)
 
