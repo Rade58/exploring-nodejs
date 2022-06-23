@@ -9,6 +9,9 @@ const DB_SQL_PATH = path.resolve(__dirname, "../mydb.sql");
 
 const initSql = readFileSync(DB_SQL_PATH, "utf-8");
 
+console.log({initSql})
+
+
 // THIS IS GOING TO BE OUR HELPERS, LIKE I TOLD YOU
 let SQL3; // (WE WILL DECLARE THEM ON THIS OBJEECT)
 
@@ -31,7 +34,14 @@ async function main(){
     exec: promisify(myDB.exec.bind(myDB))
   }
 
+  // 
+  // WE CAN PASS SQL CODE 
+  await SQL3.exec(initSql)
+
 }
+
+main()
+
 
 
 

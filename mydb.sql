@@ -1,7 +1,7 @@
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS Shiba (
-  id INTEGER PRIMARY KEYS ASC,
+  id INTEGER PRIMARY KEY ASC,
   bonkId INTEGER,
   info INTEGER,
 
