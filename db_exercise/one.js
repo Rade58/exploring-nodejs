@@ -40,7 +40,7 @@ const getBonkByInfo = async (info) => {
   // ON THE PLACE OF ? AN PROVIDED
   // ARGUMENT IS GOING TO BE PASSED
   const result = await SQL3.get(/* sql */`
-    SELECT id info FROM Bonk WHERE info = ?
+    SELECT * FROM Bonk WHERE info = ?
   `,
   info)
 
@@ -62,8 +62,6 @@ const insertBonk = async (info) => {
 
 
 
-
-
 // LETS TRY IT
 // WE SHOULD GET undefined BECAUSE WE DIDN'T INSERT ANY RECORDS
 getBonkByInfo("foobar")
@@ -75,9 +73,14 @@ getBonkByInfo("foobar")
     await insertBonk("Shibetoshi Nakato")
 
     // LETS SEE IF RECORD IS INSERTED
+    // LETS PASS INVALID STRING UNPURPOSE
+    const rec1 = await getBonkByInfo("Suzuki Nakamoto")
 
-    const rec = await getBonkByInfo("Shibetoshi Nakato")
+    // THIS SHOULD BE undefined
+    console.log({rec1})
 
-    console.log({rec})
 
+    const rec2 = await getBonkByInfo("Suzuki Nakamoto")
+    // THIS SHOULD BE OUR RECORD
+    console.log({rec2})
   })
