@@ -31,9 +31,6 @@ async function main(){
     exec: promisify(myDB.exec.bind(myDB))
   }
 
-
-
-
 }
 
 
