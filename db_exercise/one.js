@@ -27,7 +27,8 @@ async function main(){
       })
     },
     get: promisify(myDB.get.bind(myDB)),
-    all: promisify(myDB.all.bind(myDB))
+    all: promisify(myDB.all.bind(myDB)),
+    exec: promisify(myDB.exec.bind(myDB))
   }
 
 
