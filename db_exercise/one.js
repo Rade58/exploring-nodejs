@@ -80,7 +80,7 @@ getBonkByInfo("foobar")
     console.log({rec1})
 
 
-    const rec2 = await getBonkByInfo("Suzuki Nakamoto")
+    const rec2 = await getBonkByInfo("Shibetoshi Nakato")
     // THIS SHOULD BE OUR RECORD
     console.log({rec2})
   })
