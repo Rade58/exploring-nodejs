@@ -126,7 +126,9 @@ getBonkByInfo("foobar")
     await insertShiba("Hello World", 2)
     await insertShiba("Hello World", 3)
     await insertShiba("Hello World", 4)
-    await insertShiba("Hello World", 5)
+    const fiveInsert = await insertShiba("Hello World", 5)
+
+    console.log({fiveInsert})
 
     // LETS GET ALL RECORDS
     const all = await getAllRecords()
