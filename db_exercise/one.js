@@ -57,10 +57,6 @@ const insertBonk = async (info) => {
 
 }
 
-// OK, WE CAN DEFINE NEW METHODS
-// BUT LETS DEFINE THAT WE GET BY REFERENCE RECORD
-// AND LETS GET IT BY REFERENCE REC VALUE
-// SO WE NEED TO DO A LEFT JOIN
 const getShibaByBonkInfo = async (bonkInfo) => {
   
   return SQL3.get(/* sql */`
@@ -73,14 +69,28 @@ const getShibaByBonkInfo = async (bonkInfo) => {
 
 }
 
-// NOW THE INSERTION METHOD
-// WE WILL SET A REFERENCE HERE
 const insertShiba = async (info, bonkId) => {
 
   return SQL3.run(/* sql */`
     INSERT INTO Shiba (info, bonkId) VALUES (?, ?)
   `, info, bonkId)
 }
+
+// LETS DEFINE GETING ALL RECORDS FUNCTION
+const getAllRecords = async () => {
+  return SQL3.all(/* sql */`
+    SELECT
+      Shiba.info AS 'shiba',
+      Bonk.info AS 'bonk'
+    FROM
+      Shiba JOIN Bonk
+      ON (Shiba.bonkId = Bonk.id)
+    ORDER BY
+      Bonk.id DESC, Shiba.info ASC
+  `)
+}
+
+
 
 
 
@@ -99,20 +109,30 @@ getBonkByInfo("foobar")
 
     console.log({rec2})
 
-
-    // LETS CONTINUE HERE SINCE THIS ASYNC FUNCTION IS CONVINIENT
-    // TO TEST THINGS OUT
     await insertShiba("Hello World", 1)
 
-    // LETS GET WHAT WE INSERTED
     const rec3 = await getShibaByBonkInfo("Shibetoshi Nakato")
 
-    // THIS SHOULD BE OUR RECORD THAT WE FOUND THROUGH
-    // OTHER RECORD THAT IS REFERENCE
-    console.log({rec3})
+   console.log({rec3})
+  
+    // LETS FIRST ADD BUNCH OF RECORDS
+    await insertBonk("Shibetoshi Nakato zero")
+    await insertBonk("Shibetoshi Nakato one")
+    await insertBonk("Shibetoshi Nakato two")
+    await insertBonk("Shibetoshi Nakato three")
+    await insertBonk("Shibetoshi Nakato four")
 
+    await insertShiba("Hello World", 1)
+    await insertShiba("Hello World", 2)
+    await insertShiba("Hello World", 3)
+    await insertShiba("Hello World", 4)
+    await insertShiba("Hello World", 5)
 
+    // LETS GET ALL RECORDS
+    const all = await getAllRecords()
 
+    // LETS USE console.table
+    console.table(all)
 
 
   })
