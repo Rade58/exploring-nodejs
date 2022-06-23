@@ -36,11 +36,11 @@ main()
 
 
 // LETS DEFINE METHOD FOR GETTING ONE RECORD BY info FIELD
-const getShibaByInfo = async (infoVal) => {
+const getBonkByInfo = async (infoVal) => {
   // ON THE PLACE OF ? AN PROVIDED
   // ARGUMENT IS GOING TO BE PASSED
   const result = await SQL3.get(`
-    SELECT id info FROM Shiba WHERE info = ?
+    SELECT id info FROM Bonk WHERE info = ?
   `,
   infoVal)
 
@@ -49,11 +49,11 @@ const getShibaByInfo = async (infoVal) => {
 
 
 // METHOD FOR INSERTING RECORD INTO DB
-const insertShiba = async (data) => {
+const insertBonk = async (data) => {
 
   // AGAIN, ? MEANS THE SAME AS ABOVE
   return SQL3.run(`
-    INSERT INTO Shiba (info) VALUES (?) 
+    INSERT INTO Bonk (info) VALUES (?) 
   `,
   data
   )
@@ -66,17 +66,17 @@ const insertShiba = async (data) => {
 
 // LETS TRY IT
 // WE SHOULD GET undefined BECAUSE WE DIDN'T INSERT ANY RECORDS
-getShibaByInfo("foobar")
+getBonkByInfo("foobar")
   .then( async record => {
     // THIS SHOULD BE undefined
     console.log({record})
 
     // LETS INSERT IT
-    await insertShiba("Shibetoshi Nakato")
+    await insertBonk("Shibetoshi Nakato")
 
     // LETS SEE IF RECORD IS INSERTED
 
-    const rec = await getShibaByInfo("Shibetoshi Nakato")
+    const rec = await getBonkByInfo("Shibetoshi Nakato")
 
     console.log({rec})
 
