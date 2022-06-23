@@ -32,6 +32,8 @@ async function initDB(){
 
   await SQL3.exec(initSql)
 
+  console.log("datbase started");
+
 
   return SQL3
 
