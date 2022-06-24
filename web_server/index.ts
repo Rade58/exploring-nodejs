@@ -15,8 +15,11 @@ const fileServer = createFileServer()
 
 async function initServer() {
   
+
   const client = await initDB()
-  
+
+  console.log({client: JSON.stringify(client)})
+
   const httpServer = createServer(handler)
   
   httpServer.listen(HTTP_PORT, () => {
