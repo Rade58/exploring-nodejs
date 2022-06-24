@@ -32,7 +32,7 @@ async function initDB(){
 
   await SQL3.exec(initSql)
 
-  console.log("datbase started");
+  console.log("database started");
 
 
   return SQL3
