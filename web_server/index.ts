@@ -2,12 +2,15 @@ import {createServer} from 'http'
 import type {IncomingMessage, ServerResponse} from 'http'
 
 import initDB from './db'
-// import initFileServer from './file-server'
+
+// WE WILL IMPORT THIS
+import createFileServer from './file-server'
 
 
 const HTTP_PORT = 8066;
 
-
+// WE CAN CREATE FILE SERVER
+const fileServer = createFileServer()
 
 
 async function initServer() {
@@ -20,10 +23,16 @@ async function initServer() {
     console.log(`Server on poort ${HTTP_PORT}`)
   })
   
+
+
+
   async function handler(req: IncomingMessage, res: ServerResponse){
 
-    // WE ARE USING req.url
-    // SERVE DATA IF PATH IS "/hello"
+    // WE CA PASS REQUEST AND RESPONSE TO FILE SERVER
+    fileServer.serve(req,res)
+
+    // LETS RETURN HERE FOR NOW
+    return;
 
     if(req.url === "/hello"){
       res.writeHead(200, {
