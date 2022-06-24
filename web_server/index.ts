@@ -22,8 +22,8 @@ async function initServer() {
   // PRINT ALL RECORDS
   // WE WILL REMOVE THIS LATER OFCOURSE
   const table = await client.getAllRecords()
-  console.table(table
-    )
+  console.table(table)
+  // 
 
   const httpServer = createServer(handler)
   
