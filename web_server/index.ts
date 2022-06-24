@@ -38,3 +38,6 @@ async function initServer() {
 }
 
 
+
+
+initServer()
