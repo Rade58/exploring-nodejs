@@ -18,12 +18,7 @@ async function initServer() {
     console.log(`Server on poort ${HTTP_PORT}`)
   })
   
-  // THIS IS GOING TO BE OUR HANDLER
-  // async function handler()
   async function handler(req: IncomingMessage, res: ServerResponse){
-
-    // LETS JUST WRITE SOMETHING TO TST IT
-    // AND DON'T FORGET THAT WE ARE DEALING WITH STREAMS
 
     console.log({client})
 
