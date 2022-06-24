@@ -2,7 +2,7 @@ import {createServer} from 'http'
 import type {IncomingMessage, ServerResponse} from 'http'
 
 import initDB from './db'
-import {fileServer} from './file-server'
+// import initFileServer from './file-server'
 
 
 const HTTP_PORT = 8066;
