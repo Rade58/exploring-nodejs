@@ -23,9 +23,6 @@ async function initServer() {
     console.log(`Server on poort ${HTTP_PORT}`)
   })
   
-
-
-
   async function handler(req: IncomingMessage, res: ServerResponse){
 
     // WE CA PASS REQUEST AND RESPONSE TO FILE SERVER
