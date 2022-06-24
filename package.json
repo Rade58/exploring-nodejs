@@ -20,6 +20,7 @@
     "concat-stream": "^2.0.0",
     "get-stdin": "^9.0.0",
     "minimist": "^1.2.6",
+    "node-static-alias": "^1.1.2",
     "split2": "^4.1.0",
     "sqlite3": "^5.0.8",
     "through2": "^4.0.2",
