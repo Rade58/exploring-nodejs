@@ -8,7 +8,7 @@ const WEB_FILES_PATH = path.resolve(__dirname, "web_files");
 console.log({WEB_FILES_PATH})
 
 
-const initFileServer = async () => {
+const createFileServer = async () => {
 
   
   const fileServer = new Server(WEB_FILES_PATH, {
@@ -26,3 +26,5 @@ const initFileServer = async () => {
   return fileServer;
 
 }
+
+export default createFileServer;
