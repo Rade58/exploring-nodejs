@@ -36,12 +36,6 @@ const createFileServer = () => {
         serve: "index.html",
         force: true,
       },
-      // I KNOW, REGEX IS QUITE CONFUSING
-      // I WOULD NEED SOM TIME TO DECYPHER THIS
-      // BUT ON FIRST GLANCE I CAN SEE THAT WE
-      // ARE MATCHING JAVASCRIPT FILES
-      // ALSO MATCHING ANY OTHER HTML FILE
-      // AND LAST ONE IS 404 PAGE
       {
         match: /^\/js\/.+$/,
         serve: "<% absPath %>",
