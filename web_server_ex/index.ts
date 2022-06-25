@@ -30,6 +30,12 @@ async function makeRoutes(){
 
       const records = await client.getAllRecords()
 
+      // WE CAN USE res.WriteHead
+      // TO SET UP HEADERS AND STATUS CODE AND STUFF LIKE
+      // THAT BUT LETS USE OTHER THINGS
+      res.setHeader("Content-Type", "application/json") // MAYBE WE DON'T NEED THIS WHEEN USING res.json METHOD
+      res.setHeader("Cache-Control", "no-cache") // ALSO MAYBE THIS IS DEFAULT
+
       return res.status(200).json({records})
 
     }catch(err){
@@ -44,7 +50,7 @@ async function makeRoutes(){
 
   // WE NEED TO SET UP PORT AND STUFF
   app.listen(PORT, () => {
-    console.log(`server listening on port: `)
+    console.log(`server listening on port: ${PORT}`)
   })
 
 
