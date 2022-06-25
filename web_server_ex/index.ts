@@ -5,8 +5,6 @@ import seed from './seed'
 
 const PORT = 8066;
 
-// THIS IS A ABSOLUTE PATH WHERE ARE STATIC
-// FILES ARE PLACED
 const WEB_FILES_PATH = path.join(__dirname, "/web_files")
 
 console.log(WEB_FILES_PATH)
@@ -20,9 +18,6 @@ async function makeRoutes(){
   await seed(client)
   
 
-  // WE CAN DEFINE SERVING OF STATIC FILES WITH EXPRESS
-  // LIKE THIS
-  // WE NEED TO PROVIDE
   app.use(express.static(WEB_FILES_PATH, {
     setHeaders(res){
       res.setHeader("Server", "Shibatoshi Nakamoto Workshop")
@@ -30,13 +25,34 @@ async function makeRoutes(){
     // index: ["index.html"],  
   }))
 
-  // I WAS GETTING ERROR WHEN VISITING /shiba
-  // SO I MANAGED TO DEFINE SERVING OF OTHER FILES
-  // THAT AREN'T index.html, LIKE THIS
-  app.get("/shiba", async (req, res) => {
-    res.sendFile(path.join(__dirname, "/web_files", "/shiba.html"))
+  // app.get("/shiba", async (req, res) => {
+    // res.sendFile(path.join(__dirname, "/web_files", "/shiba.html"))
+  // })
+  //
+  
+  // THIS IS CUSTOM ROUTING MIDDLEWARE
+  // YOU USE match PROVIDED BY STRING PROTOTYPE
+  app.use(async (req, res, next) => {
+
+    // DOING SOME REWRITES
+    
+    if (/^\/(?:index\/?)?(?:[?#].*$)?$/.test(req.url)) {
+      req.url = "/index.html";
+    }
+    // NOT A REWRITE
+    else if (/^\/js\/.+$/.test(req.url)) {
+      next();
+      return;
+    }
+    else if (/^\/(?:[\w\d]+)(?:[\/?#].*$)?$/.test(req.url)) {
+      // @ts-ignore
+      const [,basename] = req.url.match(/^\/([\w\d]+)(?:[\/?#].*$)?$/);
+      req.url = `${basename}.html`;
+    }
+
+    next();
   })
-  // 
+
 
   app.get("/records",async (req,res) => {
 
@@ -58,7 +74,7 @@ async function makeRoutes(){
 
   })
 
-  
+
   app.listen(PORT, () => {
     console.log(`server listening on port: ${PORT}`)
   })
