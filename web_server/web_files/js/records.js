@@ -1,8 +1,27 @@
 (function(){
   
-  // LEETS JUST PRINT HELLO WORLD TO TEST THINGS OUT
-  
-  console.log("hello records")
+  // THIS IS OUR FUNCTION 
+  async function fetchAllRecords (){
+    
+    try{
+
+      const resp = await fetch("/records");
+
+      renderRecords()
+
+    }catch(err){
+
+      console.error(err.message)
+        
+    }
+  }
+
+
+  function renderRecords(){
+    // 
+    // 
+  }
+
 
 
 })()
