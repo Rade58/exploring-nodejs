@@ -13,13 +13,13 @@
 
       const data = await resp.json()
 
-      return data;
+      return data.records;
 
     }catch(err){
 
       console.error(err.message)
       
-      return {records: []}
+      return []
     }
   }
 
@@ -27,17 +27,20 @@
   // AS YOU CAN SEE I AM USING PACKAGE FROM CDN CALLED
   // json2html
   function renderData(records, el) {
+
+    console.log(records)
+
     var transforms = {
             "row": {
                     "<>": "tr",
-                    html: "<td>${something}</td><td>${other}</td>",
+                    html: "<td>${shiba}</td><td>${bonk}</td>",
             },
             "table": {
                     "<>": "table",
                     border: "1",
                     cellPadding: "10",
                     html: function table(){
-                            return `<tr><td>Something</td><td>Other</td></tr>
+                            return `<tr><td>Shiba</td><td>Bonk</td></tr>
                                     ${json2html.transform(records,transforms.row)}
                             `;
                     },
@@ -58,6 +61,8 @@
 
       fetchAllRecords().then(({records}) => {
         // USING HELPER TO RENDER DATA
+
+        console.log({records})
         renderData(records, container)
       })
 

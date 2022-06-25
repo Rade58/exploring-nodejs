@@ -39,6 +39,9 @@ async function initServer() {
           "Cache-Control": "no-cache"
         })
         // WE ARE SENDING JSON
+
+        console.log({records})
+
         res.end(JSON.stringify({records}))
         return;
       }catch(err){
