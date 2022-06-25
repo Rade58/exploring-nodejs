@@ -13,6 +13,8 @@
 
       const data = await resp.json()
 
+      // console.log({data})
+
       return data.records;
 
     }catch(err){
@@ -28,7 +30,7 @@
   // json2html
   function renderData(records, el) {
 
-    console.log(records)
+    // console.log(records)
 
     var transforms = {
             "row": {
@@ -59,10 +61,10 @@
     
     const handleClick = () => {
 
-      fetchAllRecords().then(({records}) => {
+      fetchAllRecords().then((records) => {
         // USING HELPER TO RENDER DATA
 
-        console.log({records})
+        // console.log({records})
         renderData(records, container)
       })
 
