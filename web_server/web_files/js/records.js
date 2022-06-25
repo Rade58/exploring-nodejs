@@ -1,13 +1,13 @@
 
 window.alert("Hello World!")
 
-console.log("stuff")
+// console.log("stuff")
 
 (function(){
   
   // LEETS JUST PRINT HELLO WORLD TO TEST THINGS OUT
   
-  console.log("hello records")
+  window.console.log("hello records")
 
   alert("something")
 
