@@ -11,7 +11,7 @@ main()
 
 function main(){
 
-  const child = childProc.spawn("ts-node", ["cp/cp-1.ts"])
+  const child = childProc.spawn("ts-node", ["cp/child1.ts"])
 
   child.on("exit", (code, signal) => {
     console.log({code, signal})
