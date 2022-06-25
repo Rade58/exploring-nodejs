@@ -20,9 +20,23 @@ async function makeRoutes(){
   await seed(client)
   
 
-  
+  // WE CAN DEFINE SERVING OF STATIC FILES WITH EXPRESS
+  // LIKE THIS
+  // WE NEED TO PROVIDE
+  app.use(express.static(WEB_FILES_PATH, {
+    setHeaders(res){
+      res.setHeader("Server", "Shibatoshi Nakamoto Workshop")
+    },
+    // index: ["index.html"],  
+  }))
 
-
+  // I WAS GETTING ERROR WHEN VISITING /shiba
+  // SO I MANAGED TO DEFINE SERVING OF OTHER FILES
+  // THAT AREN'T index.html, LIKE THIS
+  app.get("/shiba", async (req, res) => {
+    res.sendFile(path.join(__dirname, "/web_files", "/shiba.html"))
+  })
+  // 
 
   app.get("/records",async (req,res) => {
 
@@ -44,15 +58,6 @@ async function makeRoutes(){
 
   })
 
-
-  // WE CAN DEFINE SERVING OF STATIC FILES WITH EXPRESS
-  // LIKE THIS
-  // WE NEED TO PROVIDE
-  app.use(express.static(WEB_FILES_PATH))
-  // 
-
-
- 
 
   app.listen(PORT, () => {
     console.log(`server listening on port: ${PORT}`)
