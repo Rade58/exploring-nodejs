@@ -7,7 +7,9 @@
 
       const resp = await fetch("/records");
 
-      renderRecords()
+      const data = await resp.json()
+
+      renderRecords(data)
 
     }catch(err){
 
@@ -17,7 +19,7 @@
   }
 
 
-  function renderRecords(){
+  function renderRecords(data){
     // 
     // 
   }
