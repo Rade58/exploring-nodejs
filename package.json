@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "rm -rf web_server/my.db && ts-node web_server/index.ts",
+    "starte": "rm -rf web_server_ex/my.db && ts-node web_server_ex/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
