@@ -48,12 +48,15 @@ async function initServer() {
         return;
       }
 
+    }else{
+
+      
+      fileServer.serve(req,res)
+      return;
     }
 
 
-    fileServer.serve(req,res)
 
-    return;
 
     
   }
