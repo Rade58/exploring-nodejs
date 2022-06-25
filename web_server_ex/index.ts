@@ -1,6 +1,8 @@
 import express from 'express'
 import initClient from './db'
+import seed from './seed'
 
+const PORT = 8066;
 
 const app = express();
 
@@ -16,7 +18,9 @@ const app = express();
 async function makeRoutes(){
 
   const client = await initClient()
-  
+
+  // LETS DO SOME SEEDING SO WE HAVE SOME DATA
+  await seed(client)
   // FORGET ABOUT STATIC FILES FOR NOW
   
   // LETS MAKE OUR API ROUTE FIRST
@@ -38,6 +42,14 @@ async function makeRoutes(){
 
   })
 
+  // WE NEED TO SET UP PORT AND STUFF
+  app.listen(PORT, () => {
+    console.log(`server listening on port: `)
+  })
 
 
 }
+
+
+// WE CAN CALL THE FUNCTION
+makeRoutes()
