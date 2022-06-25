@@ -1,10 +1,11 @@
 import {createServer} from 'http'
 import type {IncomingMessage, ServerResponse} from 'http'
-
 import initDB from './db'
 import createFileServer from './file-server'
 
+
 import seed from './seed'
+
 
 const HTTP_PORT = 8066;
 
@@ -24,6 +25,9 @@ async function initServer() {
 
   async function handler(req: IncomingMessage, res: ServerResponse){
 
+    // LIKE WE MENTIONED ONCE
+    // ALL ROUTING IS JUST A BUNCH OF IF STATEMENTS
+
     if(req.method === "GET" && req.url === "/records"){
 
       try{
@@ -34,6 +38,9 @@ async function initServer() {
           "Content-Type": "application/json",
           "Cache-Control": "no-cache"
         })
+        // WE ARE SENDING JSON
+
+        console.log({records})
 
         res.end(JSON.stringify({records}))
         return;
@@ -46,16 +53,19 @@ async function initServer() {
 
     }else{
 
+      
       fileServer.serve(req,res)
       return;
     }
+
+
+
+
     
   }
 
 
 }
-
-
 
 
 initServer()

@@ -1,73 +1,43 @@
-import {createServer} from 'http'
-import type {IncomingMessage, ServerResponse} from 'http'
-import initDB from './db'
-import createFileServer from './file-server'
+import express from 'express'
+import initClient from './db'
 
 
-import seed from './seed'
+const app = express();
 
+// app    IS PRETTY MUCH ALSO  FUNCTION
+// SO YOU CAN TECHNICALLY USE IT AS ARGUMENT
+// IN HERE:     http.createServer(app)
+// BUT WE ARE NOT GOING TO DO THAT BY OURSELFS
 
-const HTTP_PORT = 8066;
+// SINCE WE WILL HAVE MORE ROUTES 
+// (AND THIS IS NOT IN ANY WAY CONVENTION OF WRITING THINGS LIKE THIS)
+// WE WILL ENCAPSULATE LOGIC INSIDE ONE FUNCTION
+// ALSO WE NEED TO "MAKE OUR DATBASE CLIENT BEFOREHAND"
+async function makeRoutes(){
 
-const fileServer = createFileServer()
-
-async function initServer() {
+  const client = await initClient()
   
-  const client = await initDB()
-
-  await seed(client)
-
-  const httpServer = createServer(handler)
+  // FORGET ABOUT STATIC FILES FOR NOW
   
-  httpServer.listen(HTTP_PORT, () => {
-    console.log(`Server on poort ${HTTP_PORT}`)
-  })
+  // LETS MAKE OUR API ROUTE FIRST
+  app.get("/records",async (req,res) => {
 
-  async function handler(req: IncomingMessage, res: ServerResponse){
+    try {
 
-    // LIKE WE MENTIONED ONCE
-    // ALL ROUTING IS JUST A BUNCH OF IF STATEMENTS
+      const records = await client.getAllRecords()
 
-    if(req.method === "GET" && req.url === "/records"){
+      return res.status(200).json({records})
 
-      try{
+    }catch(err){
 
-        const records = await client.getAllRecords()
+      console.error(err);
+      return res.status(500).send("Something went wrong!")
 
-        res.writeHead(200,{
-          "Content-Type": "application/json",
-          "Cache-Control": "no-cache"
-        })
-        // WE ARE SENDING JSON
-
-        console.log({records})
-
-        res.end(JSON.stringify({records}))
-        return;
-      }catch(err){
-        console.error(err)
-        res.statusCode = 500;
-        res.end()
-        return;
-      }
-
-    }else{
-
-      
-      fileServer.serve(req,res)
-      return;
     }
 
 
+  })
 
-
-    
-  }
 
 
 }
-
-
-
-
-initServer()
