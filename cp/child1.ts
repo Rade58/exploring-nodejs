@@ -5,3 +5,6 @@ const readable = createReadStream("_exercise/server2.js");
 const writeable = createWriteStream("cp/hello.js")
 
 readable.pipe(writeable);
+
+// HERE YOU GO
+process.exitCode = 1
