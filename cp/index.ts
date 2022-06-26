@@ -5,9 +5,18 @@ import childProc from 'child_process'
 
 
 
+
+
+
+
+
+
+
+
+
+// OLD CODE
+/* 
 main()
-
-
 function main(){
  
   const child = childProc.spawn(
@@ -22,3 +31,4 @@ function main(){
   
 }
 
+ */
