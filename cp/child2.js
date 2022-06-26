@@ -2,6 +2,7 @@ const {createWriteStream} = require('fs')
 
 getRecords()
 
+
 function getRecords(){
 
   import("node-fetch").then(async ({default: fetchData}) => {
