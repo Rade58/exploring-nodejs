@@ -1,10 +1,29 @@
-import {createReadStream, createWriteStream} from 'fs'
+import {createWriteStream} from 'fs'
+import fetch from 'node-fetch'
 
-const readable = createReadStream("_exercise/server2.js");
+getRecords()
 
-const writeable = createWriteStream("cp/hello.js")
+async function getRecords(){
 
-readable.pipe(writeable);
+  try {
 
-// HERE YOU GO
-process.exitCode = 1
+    const { body} = await fetch("http://localhost:8066/records")
+
+    // TO BE SURE THAT WE GOT THE DATA LETS PIPE 
+    //    body  WHIC IS A READABLE STREAM TO SOME FILE
+
+    const writable = createWriteStream("cp/records.json")
+
+    body?.pipe(writable)
+
+    body?.once("end", () => {
+      process.exitCode = 0
+    })
+
+
+  }catch(err){
+
+    process.exitCode = 1
+  }
+
+}
