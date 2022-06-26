@@ -32,7 +32,7 @@ async function makeRoutes(){
   
   // THIS IS CUSTOM ROUTING MIDDLEWARE
   // YOU USE match PROVIDED BY STRING PROTOTYPE
-  app.use(async (req, res, next) => {
+  /* app.use(async (req, res, next) => {
 
     // DOING SOME REWRITES
     
@@ -51,7 +51,7 @@ async function makeRoutes(){
     }
 
     next();
-  })
+  }) */
 
 
   app.get("/records",async (req,res) => {
